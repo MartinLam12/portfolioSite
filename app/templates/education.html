@@ -20,18 +20,7 @@
 </head>
 
 <body>
-    <header class="nav-bar">
-        <div class="nav-content">
-            <a href="/">
-                <div class="nav-logo">
-                    <img src="../static/img/logo.svg" />
-                </div>
-            </a>
-            <nav>
-                <a href="/">Home</a>
-            </nav>
-        </div>
-    </header>
+    {% include "nav.html" %}
 
     <div class="profile">
         <h1>{{ title }}</h1>
