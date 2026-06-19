@@ -1,0 +1,283 @@
+/* =====================================================
+   Work Experience Page Styles
+   ===================================================== */
+
+/* Page Header */
+.we-page-header {
+    background: linear-gradient(135deg, #1C539F 0%, #0d3875 100%);
+    text-align: center;
+    padding: 60px 20px 80px;
+    position: relative;
+}
+
+.we-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f9;
+    clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.we-page-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 12px;
+    letter-spacing: -0.5px;
+}
+
+.we-page-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    font-weight: 300;
+}
+
+/* Timeline Section */
+.we-timeline-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+}
+
+.we-timeline {
+    position: relative;
+}
+
+/* Center vertical line */
+.we-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #1C539F, #a8c4f0);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Cards */
+.we-card {
+    position: relative;
+    width: 44%;
+    margin-bottom: 50px;
+}
+
+.we-card--left {
+    left: 0;
+}
+
+.we-card--right {
+    left: 56%;
+}
+
+/* Timeline dot */
+.we-card-dot {
+    position: absolute;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    background-color: #1C539F;
+    border: 3px solid #f5f5f9;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #1C539F;
+    z-index: 1;
+}
+
+.we-card--left .we-card-dot {
+    right: -32px;
+}
+
+.we-card--right .we-card-dot {
+    left: -32px;
+}
+
+/* Card Body */
+.we-card-body {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 26px;
+    box-shadow: 0 4px 18px rgba(28, 83, 159, 0.10);
+    border: 1px solid rgba(28, 83, 159, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.we-card-body:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(28, 83, 159, 0.16);
+}
+
+/* Connector line from dot to card */
+.we-card--left .we-card-body::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: -18px;
+    border-width: 8px 0 8px 18px;
+    border-style: solid;
+    border-color: transparent transparent transparent #ffffff;
+}
+
+.we-card--right .we-card-body::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: -18px;
+    border-width: 8px 18px 8px 0;
+    border-style: solid;
+    border-color: transparent #ffffff transparent transparent;
+}
+
+/* Card Header */
+.we-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.we-card-icon {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #e8f0fb, #d0e1f9);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.we-card-meta {
+    flex: 1;
+    min-width: 0;
+}
+
+.we-card-role {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px;
+    line-height: 1.2;
+}
+
+.we-card-company {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1C539F;
+    margin: 0;
+}
+
+/* Badges */
+.we-card-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.we-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.we-badge--date {
+    background-color: #e8f0fb;
+    color: #1C539F;
+}
+
+.we-badge--location {
+    background-color: #f0f0f5;
+    color: #555;
+}
+
+/* Bullet List */
+.we-card-list {
+    margin: 0 0 16px;
+    padding-left: 18px;
+    list-style: none;
+}
+
+.we-card-list li {
+    position: relative;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    padding-left: 12px;
+}
+
+.we-card-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    background-color: #1C539F;
+    border-radius: 50%;
+}
+
+/* Skill Tags */
+.we-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.we-tag {
+    background-color: #1C539F;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+/* Footer */
+.we-footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #1C539F;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+/* =====================================================
+   Responsive – stack timeline on small screens
+   ===================================================== */
+@media (max-width: 700px) {
+    .we-timeline::before {
+        left: 18px;
+    }
+
+    .we-card {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 46px;
+    }
+
+    .we-card-dot {
+        left: 10px !important;
+        right: auto !important;
+        top: 22px;
+    }
+
+    .we-card--left .we-card-body::after,
+    .we-card--right .we-card-body::before {
+        display: none;
+    }
+
+    .we-page-title {
+        font-size: 32px;
+    }
+}
