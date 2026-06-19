@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Work Experience{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/work_experience.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="we-page-header">
+    <h1 class="we-page-title">Work Experience</h1>
+    <p class="we-page-subtitle">My professional journey so far</p>
+</div>
+
+<!-- Timeline -->
+<section class="we-timeline-section">
+    <div class="we-timeline">
+
+        {% for job in experiences %}
+        <div class="we-card {% if loop.index is odd %}we-card--left{% else %}we-card--right{% endif %}">
+            <div class="we-card-dot"></div>
+            <div class="we-card-body">
+                <div class="we-card-header">
+                    <div class="we-card-icon">
+                        <span>{{ job.icon }}</span>
+                    </div>
+                    <div class="we-card-meta">
+                        <h2 class="we-card-role">{{ job.role }}</h2>
+                        <h3 class="we-card-company">{{ job.company }}</h3>
+                    </div>
+                </div>
+                <div class="we-card-details">
+                    <span class="we-badge we-badge--date">{{ job.start }} &ndash; {{ job.end }}</span>
+                    <span class="we-badge we-badge--location">&#128205; {{ job.location }}</span>
+                </div>
+                <ul class="we-card-list">
+                    {% for bullet in job.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="we-card-tags">
+                    {% for tag in job.tags %}
+                    <span class="we-tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}

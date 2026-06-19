@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    {% block extra_css %}{% endblock %}
+
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
+    <title>{% block title %}Portfolio{% endblock %}</title>
+</head>
+
+<body>
+
+    <!-- ====== NAV BAR ====== -->
+    <header class="nav-bar">
+        <div class="nav-content">
+
+            <!-- Logo -->
+            <a href="{{ url_for('index') }}" class="nav-logo-link">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" class="nav-logo-img" alt="Logo" />
+            </a>
+
+            <!-- Nav Links -->
+            <ul class="nav-links">
+                <li>
+                    <a href="{{ url_for('index') }}"
+                       class="nav-link {% if request.endpoint == 'index' %}nav-link--active{% endif %}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('work_experience') }}"
+                       class="nav-link {% if request.endpoint == 'work_experience' %}nav-link--active{% endif %}">
+                        Work Experience
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('hobbies') }}"
+                       class="nav-link {% if request.endpoint == 'hobbies' %}nav-link--active{% endif %}">
+                        Hobbies
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+    <!-- ====== END NAV ====== -->
+
+    {% block content %}{% endblock %}
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer">
+        <p>&copy; 2024 My Portfolio &mdash; Built with Flask</p>
+    </footer>
+
+</body>
+</html>

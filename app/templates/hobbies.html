@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Hobbies{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/hobbies.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="hb-page-header">
+    <h1 class="hb-page-title">Hobbies &amp; Interests</h1>
+    <p class="hb-page-subtitle">Things I love doing outside of work</p>
+</div>
+
+<!-- Intro -->
+<section class="hb-intro">
+    <p>Beyond the screen, I spend my time doing things that keep me curious and energized. Here's a peek at what I'm into.</p>
+</section>
+
+<!-- Hobby Grid -->
+<section class="hb-grid-section">
+    <div class="hb-grid">
+
+        {% for hobby in hobbies %}
+        <div class="hb-card {% if hobby.featured %}hb-card--featured{% endif %}">
+            <div class="hb-card-img-wrap">
+                <img src="{{ hobby.image }}" alt="{{ hobby.name }}" class="hb-card-img" />
+                <div class="hb-card-overlay">
+                    <p class="hb-card-desc">{{ hobby.desc }}</p>
+                </div>
+            </div>
+            <div class="hb-card-footer">
+                <span class="hb-category">{{ hobby.emoji }} {{ hobby.category }}</span>
+                <h2 class="hb-card-title">{{ hobby.name }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
