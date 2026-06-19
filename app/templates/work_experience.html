@@ -30,95 +30,36 @@
     <section class="we-timeline-section">
         <div class="we-timeline">
 
-            <!-- Experience Card 1 -->
-            <div class="we-card we-card--left">
+            {% for entry in entries %}
+            <div class="we-card {{ 'we-card--left' if loop.index0 % 2 == 0 else 'we-card--right' }}">
                 <div class="we-card-dot"></div>
                 <div class="we-card-body">
                     <div class="we-card-header">
                         <div class="we-card-icon">
-                            <span>&#128187;</span>
+                            <span>{{ entry.icon }}</span>
                         </div>
                         <div class="we-card-meta">
-                            <h2 class="we-card-role">Software Engineer Intern</h2>
-                            <h3 class="we-card-company">Tech Company Inc.</h3>
+                            <h2 class="we-card-role">{{ entry.role }}</h2>
+                            <h3 class="we-card-company">{{ entry.company }}</h3>
                         </div>
                     </div>
                     <div class="we-card-details">
-                        <span class="we-badge we-badge--date">Jun 2024 &ndash; Aug 2024</span>
-                        <span class="we-badge we-badge--location">&#128205; San Francisco, CA</span>
+                        <span class="we-badge we-badge--date">{{ entry.dates }}</span>
+                        <span class="we-badge we-badge--location">&#128205; {{ entry.location }}</span>
                     </div>
                     <ul class="we-card-list">
-                        <li>Built and shipped features used by 10,000+ daily active users.</li>
-                        <li>Collaborated with senior engineers on REST API design and optimization.</li>
-                        <li>Reduced page load time by 30% through lazy loading and caching strategies.</li>
+                        {% for bullet in entry.bullets %}
+                        <li>{{ bullet }}</li>
+                        {% endfor %}
                     </ul>
                     <div class="we-card-tags">
-                        <span class="we-tag">Python</span>
-                        <span class="we-tag">React</span>
-                        <span class="we-tag">PostgreSQL</span>
+                        {% for tag in entry.tags %}
+                        <span class="we-tag">{{ tag }}</span>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-
-            <!-- Experience Card 2 -->
-            <div class="we-card we-card--right">
-                <div class="we-card-dot"></div>
-                <div class="we-card-body">
-                    <div class="we-card-header">
-                        <div class="we-card-icon">
-                            <span>&#128202;</span>
-                        </div>
-                        <div class="we-card-meta">
-                            <h2 class="we-card-role">Data Analyst</h2>
-                            <h3 class="we-card-company">Analytics Co.</h3>
-                        </div>
-                    </div>
-                    <div class="we-card-details">
-                        <span class="we-badge we-badge--date">Jan 2024 &ndash; May 2024</span>
-                        <span class="we-badge we-badge--location">&#128205; Remote</span>
-                    </div>
-                    <ul class="we-card-list">
-                        <li>Developed dashboards that visualized KPIs for C-suite stakeholders.</li>
-                        <li>Automated weekly reporting pipeline, saving 6 hours of manual work per week.</li>
-                        <li>Performed A/B testing analysis that guided a product redesign decision.</li>
-                    </ul>
-                    <div class="we-card-tags">
-                        <span class="we-tag">SQL</span>
-                        <span class="we-tag">Python</span>
-                        <span class="we-tag">Tableau</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experience Card 3 -->
-            <div class="we-card we-card--left">
-                <div class="we-card-dot"></div>
-                <div class="we-card-body">
-                    <div class="we-card-header">
-                        <div class="we-card-icon">
-                            <span>&#127760;</span>
-                        </div>
-                        <div class="we-card-meta">
-                            <h2 class="we-card-role">Web Developer</h2>
-                            <h3 class="we-card-company">Freelance</h3>
-                        </div>
-                    </div>
-                    <div class="we-card-details">
-                        <span class="we-badge we-badge--date">Sep 2023 &ndash; Dec 2023</span>
-                        <span class="we-badge we-badge--location">&#128205; Remote</span>
-                    </div>
-                    <ul class="we-card-list">
-                        <li>Designed and deployed responsive websites for 5 small business clients.</li>
-                        <li>Integrated payment APIs and contact form backends for client projects.</li>
-                        <li>Maintained ongoing client relationships and delivered on tight deadlines.</li>
-                    </ul>
-                    <div class="we-card-tags">
-                        <span class="we-tag">HTML</span>
-                        <span class="we-tag">CSS</span>
-                        <span class="we-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </section>
