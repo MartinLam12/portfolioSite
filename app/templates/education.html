@@ -22,22 +22,29 @@
 <body>
     {% include "nav.html" %}
 
-    <div class="profile">
-        <h1>{{ title }}</h1>
+    <div class="edu-header">
+        <h1 class="edu-header-title">{{ title }}</h1>
+        <p class="edu-header-subtitle">My academic journey</p>
     </div>
 
-    <main class="content">
-        <section class="education-section">
-            <h2 class="section-heading">Education</h2>
-            {% for entry in entries %}
-            <div class="education-entry">
-                <h3 class="education-school">{{ entry.school }}</h3>
-                <p class="education-degree">{{ entry.degree }}</p>
-                <p class="education-dates">{{ entry.dates }}</p>
-                <p class="education-description">{{ entry.description }}</p>
+    <main class="edu-grid">
+        {% for entry in entries %}
+        <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-body">
+                <h3 class="edu-school">{{ entry.school }}</h3>
+                <p class="edu-degree">{{ entry.degree }}</p>
+                <span class="edu-dates">{{ entry.dates }}</span>
+                <p class="edu-desc">{{ entry.description }}</p>
             </div>
-            {% endfor %}
-        </section>
+        </div>
+        {% endfor %}
     </main>
+
+    <footer class="pg-foot" style="text-align:center;">
+        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
+            &copy; 2024 My Portfolio &mdash; Built with Flask
+        </p>
+    </footer>
 </body>
 </html>

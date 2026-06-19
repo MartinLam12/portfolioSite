@@ -26,12 +26,18 @@
     <div class="profile">
         <div id="profile-picture" class="profile-picture blank"></div>
         <h1>{{ title }}</h1>
+        <p class="profile-subtitle">Software Engineer &nbsp;·&nbsp; MLH Fellow</p>
+        <div class="profile-cta-row">
+            <a href="/work-experience" class="profile-cta">💼 Work</a>
+            <a href="/education" class="profile-cta">🎓 Education</a>
+            <a href="/hobbies" class="profile-cta">🎨 Hobbies</a>
+            <a href="/map" class="profile-cta">🗺️ Places</a>
+        </div>
     </div>
-
 
     <main class="content">
         <section class="about-section">
-            <h2 class="section-heading">About Yourself</h2>
+            <h2 class="section-heading">About Me</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -39,7 +45,52 @@
                 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                 culpa qui officia deserunt mollit anim id est laborum.</p>
         </section>
+
+        <section class="explore-section">
+            <h2 class="section-heading">Explore</h2>
+            <div class="page-cards-grid">
+                <a href="/work-experience" class="page-card">
+                    <div class="page-card-icon">💼</div>
+                    <div class="page-card-text">
+                        <h3>Work Experience</h3>
+                        <p>Internships, roles, and projects I've shipped professionally.</p>
+                    </div>
+                </a>
+                <a href="/education" class="page-card">
+                    <div class="page-card-icon">🎓</div>
+                    <div class="page-card-text">
+                        <h3>Education</h3>
+                        <p>Schools, degrees, and the academic journey behind the skills.</p>
+                    </div>
+                </a>
+                <a href="/hobbies" class="page-card">
+                    <div class="page-card-icon">🎨</div>
+                    <div class="page-card-text">
+                        <h3>Hobbies</h3>
+                        <p>What I love doing when I'm not writing code.</p>
+                    </div>
+                </a>
+                <a href="/map" class="page-card">
+                    <div class="page-card-icon">🗺️</div>
+                    <div class="page-card-text">
+                        <h3>Favorite Places</h3>
+                        <p>A map of spots around the world that mean something to me.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
+
+    <footer class="pg-foot" style="text-align:center;">
+        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
+            &copy; 2024 My Portfolio &mdash; Built with Flask
+            &nbsp;&nbsp;
+            <a href="/work-experience" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Work</a>
+            <a href="/education" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Education</a>
+            <a href="/hobbies" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Hobbies</a>
+            <a href="/map" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Map</a>
+        </p>
+    </footer>
 </body>
 
 </html>

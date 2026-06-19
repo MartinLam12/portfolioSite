@@ -23,6 +23,17 @@ WORK_EXPERIENCE_ENTRIES = [
         "tags": ["Python", "React", "PostgreSQL"],
     },
     {
+    "role": "Your New Role",
+    "company": "Company Name",
+    "dates": "Jan 2025 – Present",
+    "location": "City, ST",
+    "icon": "🚀",
+    "bullets": [
+        "Did something impactful.",
+    ],
+    "tags": ["Python", "Flask"],
+},
+    {
         "role": "Data Analyst",
         "company": "Analytics Co.",
         "dates": "Jan 2024 – May 2024",
