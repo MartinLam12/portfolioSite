@@ -55,6 +55,11 @@ body {
     text-decoration: none;
     font-weight: 700;
     font-size: 16px;
+    margin-left: 24px;
+}
+
+.nav-content nav a:first-child {
+    margin-left: 0;
 }
 
 .nav-content nav a:hover {
