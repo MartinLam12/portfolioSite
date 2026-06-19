@@ -1,0 +1,220 @@
+/* =====================================================
+   Hobbies Page Styles
+   ===================================================== */
+
+/* Page Header */
+.hb-page-header {
+    background: linear-gradient(135deg, #1C539F 0%, #0d3875 100%);
+    text-align: center;
+    padding: 60px 20px 80px;
+    position: relative;
+}
+
+.hb-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f9;
+    clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hb-page-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 12px;
+    letter-spacing: -0.5px;
+}
+
+.hb-page-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    font-weight: 300;
+}
+
+/* Intro */
+.hb-intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 10px;
+    text-align: center;
+}
+
+.hb-intro p {
+    font-size: 17px;
+    color: #4b5563;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* Grid Section */
+.hb-grid-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* CSS Grid – 3 columns, featured card spans 2 columns */
+.hb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 320px;
+    gap: 20px;
+}
+
+/* Card Base */
+.hb-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(28, 83, 159, 0.10);
+    background: #ffffff;
+    cursor: default;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hb-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(28, 83, 159, 0.18);
+}
+
+/* Featured card spans 2 columns and 2 rows */
+.hb-card--featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Image wrapper fills full card except footer */
+.hb-card-img-wrap {
+    position: absolute;
+    inset: 0;
+    bottom: 64px;
+}
+
+.hb-card--featured .hb-card-img-wrap {
+    bottom: 72px;
+}
+
+.hb-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.hb-card:hover .hb-card-img {
+    transform: scale(1.05);
+}
+
+/* Hover overlay with description */
+.hb-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(13, 56, 117, 0.0) 0%, rgba(13, 56, 117, 0.82) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hb-card:hover .hb-card-overlay {
+    opacity: 1;
+}
+
+.hb-card-desc {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hb-card--featured .hb-card-desc {
+    font-size: 16px;
+}
+
+/* Card Footer */
+.hb-card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #ffffff;
+    padding: 10px 16px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid rgba(28, 83, 159, 0.07);
+}
+
+.hb-card--featured .hb-card-footer {
+    height: 72px;
+    padding: 12px 20px 14px;
+}
+
+.hb-category {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1C539F;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 3px;
+}
+
+.hb-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.hb-card--featured .hb-card-title {
+    font-size: 22px;
+}
+
+/* Footer */
+.hb-footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #1C539F;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+}
+
+/* =====================================================
+   Responsive
+   ===================================================== */
+@media (max-width: 900px) {
+    .hb-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 280px;
+    }
+
+    .hb-card--featured {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 560px) {
+    .hb-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
+    }
+
+    .hb-card--featured {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .hb-page-title {
+        font-size: 32px;
+    }
+}
