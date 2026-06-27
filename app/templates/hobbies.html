@@ -1,44 +1,63 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Hobbies{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Hobbies">
+    <meta property="og:description" content="My Hobbies & Interests">
 
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/hobbies.css') }}">
-{% endblock %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
 
-{% block content %}
+    <link rel="stylesheet" href="../static/styles/main.css">
+    <link rel="stylesheet" href="../static/styles/hobbies.css">
+    <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
+    <title>Hobbies</title>
+</head>
 
-<!-- Page Header -->
-<div class="hb-page-header">
-    <h1 class="hb-page-title">Hobbies &amp; Interests</h1>
-    <p class="hb-page-subtitle">Things I love doing outside of work</p>
-</div>
+<body>
 
-<!-- Intro -->
-<section class="hb-intro">
-    <p>Beyond the screen, I spend my time doing things that keep me curious and energized. Here's a peek at what I'm into.</p>
-</section>
+    {% include "nav.html" %}
 
-<!-- Hobby Grid -->
-<section class="hb-grid-section">
-    <div class="hb-grid">
+    <!-- Page Header -->
+    <div class="hb-page-header">
+        <h1 class="hb-page-title">Hobbies &amp; Interests</h1>
+        <p class="hb-page-subtitle">Things I love doing outside of work</p>
+    </div>
 
-        {% for hobby in hobbies %}
-        <div class="hb-card {% if hobby.featured %}hb-card--featured{% endif %}">
-            <div class="hb-card-img-wrap">
-                <img src="{{ hobby.image }}" alt="{{ hobby.name }}" class="hb-card-img" />
-                <div class="hb-card-overlay">
-                    <p class="hb-card-desc">{{ hobby.desc }}</p>
+    <!-- Intro -->
+    <section class="hb-intro">
+        <p>Beyond the screen, I spend my time doing things that keep me curious and energized. Here's a peek at what I'm into.</p>
+    </section>
+
+    <!-- Hobby Grid -->
+    <section class="hb-grid-section">
+        <div class="hb-grid">
+
+            {% for hobby in hobbies %}
+            <div class="hb-card{{ ' hb-card--featured' if hobby.featured else '' }}">
+                <div class="hb-card-img-wrap">
+                    <img src="https://picsum.photos/seed/{{ hobby.seed }}/{{ '800/500' if hobby.featured else '600/400' }}" alt="{{ hobby.title }}" class="hb-card-img" />
+                    <div class="hb-card-overlay">
+                        <p class="hb-card-desc">{{ hobby.description }}</p>
+                    </div>
+                </div>
+                <div class="hb-card-footer">
+                    <span class="hb-category">{{ hobby.category_icon }} {{ hobby.category }}</span>
+                    <h2 class="hb-card-title">{{ hobby.title }}</h2>
                 </div>
             </div>
-            <div class="hb-card-footer">
-                <span class="hb-category">{{ hobby.emoji }} {{ hobby.category }}</span>
-                <h2 class="hb-card-title">{{ hobby.name }}</h2>
-            </div>
+            {% endfor %}
+
         </div>
-        {% endfor %}
+    </section>
 
-    </div>
-</section>
+    <footer class="pg-foot" style="text-align:center;">
+        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
+            &copy; 2024 My Portfolio &mdash; Built with Flask
+        </p>
+    </footer>
 
-{% endblock %}
+</body>
+</html>

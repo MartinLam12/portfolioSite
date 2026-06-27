@@ -1,0 +1,55 @@
+.favorite-places-section {
+    width: 100%;
+    padding: 48px 7% 90px;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+.favorite-places-title {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    font-family: "Roboto", sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.favorite-map-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 560px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 22px;
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+}
+
+.favorite-map {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .favorite-places-section {
+        padding: 36px 5% 70px;
+    }
+
+    .favorite-places-title {
+        font-size: 1.9rem;
+    }
+
+    .favorite-map-container {
+        height: 430px;
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .favorite-map-container {
+        height: 340px;
+    }
+}

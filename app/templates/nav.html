@@ -1,0 +1,31 @@
+<header class="nav-bar">
+    <div class="nav-content">
+        <a href="{{ url_for('index') }}" class="nav-logo-link">
+            <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="nav-logo-img" />
+        </a>
+
+        <button class="nav-hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="navMenu">
+            <a href="{{ url_for('index') }}"{% if request.path == '/' %} class="nav-active"{% endif %}>Home</a>
+            <a href="{{ url_for('education.education') }}"{% if request.path == '/education' %} class="nav-active"{% endif %}>Education</a>
+            <a href="{{ url_for('work_experience') }}"{% if request.path == '/work-experience' %} class="nav-active"{% endif %}>Work</a>
+            <a href="{{ url_for('hobbies') }}"{% if request.path == '/hobbies' %} class="nav-active"{% endif %}>Hobbies</a>
+            <a href="{{ url_for('map') }}"{% if request.path == '/map' %} class="nav-active"{% endif %}>Map</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    (function () {
+        var toggle = document.getElementById('navToggle');
+        var menu = document.getElementById('navMenu');
+        toggle.addEventListener('click', function () {
+            var open = menu.classList.toggle('nav-open');
+            toggle.classList.toggle('nav-hamburger--open', open);
+            toggle.setAttribute('aria-expanded', open);
+        });
+    })();
+</script>

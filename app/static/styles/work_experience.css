@@ -2,6 +2,7 @@
    Work Experience Page Styles
    ===================================================== */
 
+/* Page Header */
 .we-page-header {
     background: linear-gradient(135deg, #1C539F 0%, #0d3875 100%);
     text-align: center;
@@ -46,6 +47,7 @@
     position: relative;
 }
 
+/* Center vertical line */
 .we-timeline::before {
     content: '';
     position: absolute;
@@ -65,8 +67,13 @@
     margin-bottom: 50px;
 }
 
-.we-card--left { left: 0; }
-.we-card--right { left: 56%; }
+.we-card--left {
+    left: 0;
+}
+
+.we-card--right {
+    left: 56%;
+}
 
 /* Timeline dot */
 .we-card-dot {
@@ -81,8 +88,13 @@
     z-index: 1;
 }
 
-.we-card--left .we-card-dot  { right: -32px; }
-.we-card--right .we-card-dot { left: -32px; }
+.we-card--left .we-card-dot {
+    right: -32px;
+}
+
+.we-card--right .we-card-dot {
+    left: -32px;
+}
 
 /* Card Body */
 .we-card-body {
@@ -99,8 +111,8 @@
     box-shadow: 0 10px 30px rgba(28, 83, 159, 0.16);
 }
 
-/* Arrow connectors */
-.we-card--left  .we-card-body::after {
+/* Connector line from dot to card */
+.we-card--left .we-card-body::after {
     content: '';
     position: absolute;
     top: 30px;
@@ -140,7 +152,10 @@
     font-size: 22px;
 }
 
-.we-card-meta { flex: 1; min-width: 0; }
+.we-card-meta {
+    flex: 1;
+    min-width: 0;
+}
 
 .we-card-role {
     font-size: 17px;
@@ -173,8 +188,15 @@
     font-weight: 500;
 }
 
-.we-badge--date     { background-color: #e8f0fb; color: #1C539F; }
-.we-badge--location { background-color: #f0f0f5; color: #555; }
+.we-badge--date {
+    background-color: #e8f0fb;
+    color: #1C539F;
+}
+
+.we-badge--location {
+    background-color: #f0f0f5;
+    color: #555;
+}
 
 /* Bullet List */
 .we-card-list {
@@ -220,11 +242,23 @@
     letter-spacing: 0.3px;
 }
 
+/* Footer */
+.we-footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #1C539F;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    margin-top: 40px;
+}
+
 /* =====================================================
-   Responsive
+   Responsive – stack timeline on small screens
    ===================================================== */
 @media (max-width: 700px) {
-    .we-timeline::before { left: 18px; }
+    .we-timeline::before {
+        left: 18px;
+    }
 
     .we-card {
         width: 100%;
@@ -238,8 +272,12 @@
         top: 22px;
     }
 
-    .we-card--left  .we-card-body::after,
-    .we-card--right .we-card-body::before { display: none; }
+    .we-card--left .we-card-body::after,
+    .we-card--right .we-card-body::before {
+        display: none;
+    }
 
-    .we-page-title { font-size: 32px; }
+    .we-page-title {
+        font-size: 32px;
+    }
 }
