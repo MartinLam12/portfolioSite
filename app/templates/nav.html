@@ -12,7 +12,7 @@
             <a href="{{ url_for('index') }}"{% if request.path == '/' %} class="nav-active"{% endif %}>Home</a>
             <a href="{{ url_for('education.education') }}"{% if request.path == '/education' %} class="nav-active"{% endif %}>Education</a>
             <a href="{{ url_for('work_experience') }}"{% if request.path == '/work-experience' %} class="nav-active"{% endif %}>Work</a>
-            <a href="{{ url_for('hobbies') }}"{% if request.path == '/hobbies' %} class="nav-active"{% endif %}>Hobbies</a>
+            <a href="{{ url_for('projects') }}"{% if request.path == '/projects' %} class="nav-active"{% endif %}>Projects</a>
             <a href="{{ url_for('map') }}"{% if request.path == '/map' %} class="nav-active"{% endif %}>Map</a>
         </nav>
     </div>
@@ -26,6 +26,30 @@
             var open = menu.classList.toggle('nav-open');
             toggle.classList.toggle('nav-hamburger--open', open);
             toggle.setAttribute('aria-expanded', open);
+        });
+    })();
+
+    (function () {
+        var sectionMap = {
+            '/education':      'section-education',
+            '/work-experience':'section-work',
+            '/projects':       'section-projects',
+            '/map':            'section-map'
+        };
+
+        document.querySelectorAll('#navMenu a').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                var path = new URL(this.getAttribute('href'), location.origin).pathname;
+                var sectionId = sectionMap[path];
+                if (!sectionId) return;
+                e.preventDefault();
+                if (location.pathname === '/') {
+                    var el = document.getElementById(sectionId);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    location.href = '/#' + sectionId;
+                }
+            });
         });
     })();
 </script>

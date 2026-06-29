@@ -4,16 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:title" content="Hobbies">
-    <meta property="og:description" content="My Hobbies & Interests">
+    <meta property="og:title" content="Projects">
+    <meta property="og:description" content="Things I've built">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../static/styles/main.css">
     <link rel="stylesheet" href="../static/styles/hobbies.css">
     <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
-    <title>Hobbies</title>
+    <title>Projects</title>
 </head>
 
 <body>
@@ -22,30 +23,33 @@
 
     <!-- Page Header -->
     <div class="hb-page-header">
-        <h1 class="hb-page-title">Hobbies &amp; Interests</h1>
-        <p class="hb-page-subtitle">Things I love doing outside of work</p>
+        <h1 class="hb-page-title">Projects</h1>
+        <p class="hb-page-subtitle">Things I've built</p>
     </div>
 
     <!-- Intro -->
     <section class="hb-intro">
-        <p>Beyond the screen, I spend my time doing things that keep me curious and energized. Here's a peek at what I'm into.</p>
+        <p>Here are some of the projects I've built — from AI agents to open source contributions.</p>
     </section>
 
-    <!-- Hobby Grid -->
-    <section class="hb-grid-section">
-        <div class="hb-grid">
+    <!-- Projects Grid -->
+    <section class="proj-section">
+        <div class="proj-grid">
 
-            {% for hobby in hobbies %}
-            <div class="hb-card{{ ' hb-card--featured' if hobby.featured else '' }}">
-                <div class="hb-card-img-wrap">
-                    <img src="https://picsum.photos/seed/{{ hobby.seed }}/{{ '800/500' if hobby.featured else '600/400' }}" alt="{{ hobby.title }}" class="hb-card-img" />
-                    <div class="hb-card-overlay">
-                        <p class="hb-card-desc">{{ hobby.description }}</p>
-                    </div>
+            {% for project in projects %}
+            <div class="proj-card{{ ' proj-card--featured' if project.featured else '' }}">
+                <div class="proj-card-top">
+                    <span class="proj-date">{{ project.date }}</span>
+                    <h2 class="proj-title">{{ project.title }}</h2>
+                    {% if project.subtitle %}
+                    <p class="proj-subtitle-label">{{ project.subtitle }}</p>
+                    {% endif %}
                 </div>
-                <div class="hb-card-footer">
-                    <span class="hb-category">{{ hobby.category_icon }} {{ hobby.category }}</span>
-                    <h2 class="hb-card-title">{{ hobby.title }}</h2>
+                <p class="proj-desc">{{ project.description }}</p>
+                <div class="proj-tags">
+                    {% for tag in project.tags %}
+                    <span class="proj-tag">{{ tag }}</span>
+                    {% endfor %}
                 </div>
             </div>
             {% endfor %}

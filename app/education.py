@@ -4,24 +4,13 @@ education_bp = Blueprint('education', __name__)
 
 EDUCATION_ENTRIES = [
     {
-        "school": "University of Lorem",
-        "degree": "Bachelor of Science in Ipsum Studies",
-        "dates": "Aug 2019 - May 2023",
+        "school": "North Seattle College",
+        "degree": "B.S. Computer Science, Data Science",
+        "dates": "Expected Spring 2027",
         "description": (
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod "
-            "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
-            "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea "
-            "commodo consequat."
-        ),
-    },
-    {
-        "school": "Dolor County High School",
-        "degree": "High School Diploma",
-        "dates": "Aug 2015 - May 2019",
-        "description": (
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum "
-            "dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non "
-            "proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            "Studying Computer Science and Data Science with a focus on software engineering, "
+            "data analysis, and algorithms. Active in undergraduate research, exploring topics "
+            "from environmental data analysis to course success metrics."
         ),
     },
 ]
