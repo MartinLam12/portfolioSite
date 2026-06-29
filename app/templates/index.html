@@ -1,29 +1,30 @@
-{% extends "base.html" %}
-
-{% block title %}{{ title }}{% endblock %}
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-
-    <link lang="sass" rel="stylesheet" href="./static/styles/main.css">
-
-    <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/education.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/work_experience.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/hobbies.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/travel-map.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
     <title>{{ title }}</title>
 </head>
-
 <body>
     {% include "nav.html" %}
 
     <div class="profile">
         <div id="profile-picture" class="profile-picture blank"></div>
         <h1>{{ title }}</h1>
-        <p class="profile-subtitle">Software Engineer &nbsp;·&nbsp; MLH Fellow</p>
+        <p class="profile-subtitle">CS Student &nbsp;·&nbsp; MLH Fellow &nbsp;·&nbsp; Seattle, WA</p>
         <div class="profile-cta-row">
             <a href="/work-experience" class="profile-cta">💼 Work</a>
             <a href="/education" class="profile-cta">🎓 Education</a>
-            <a href="/hobbies" class="profile-cta">🎨 Hobbies</a>
+            <a href="/projects" class="profile-cta">🚀 Projects</a>
             <a href="/map" class="profile-cta">🗺️ Places</a>
         </div>
     </div>
@@ -31,14 +32,24 @@
     <main class="content">
         <section class="about-section">
             <h2 class="section-heading">About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>I'm a Computer Science and Data Science student at North Seattle College (graduating Spring 2027),
+                based in Seattle, WA. I build software that solves real problems — from AI email agents
+                to open source Go CMS plugins. I'm currently working as a Strategic Courses Researcher
+                and an MLH Fellow.</p>
+            <p>My experience spans full-stack web development, mobile apps (React Native), data analysis,
+                and open source contribution. I'm also a former CS tutor who spent three years mentoring
+                100+ students in programming.</p>
         </section>
+    </main>
 
+    <div class="marquee-strip">
+        <div class="marquee-inner">
+            <span>DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW · DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW ·</span>
+            <span>DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW · DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW ·</span>
+        </div>
+    </div>
+
+    <main class="content" style="padding-top:60px">
         <section class="explore-section">
             <h2 class="section-heading">Explore</h2>
             <div class="page-cards-grid">
@@ -56,11 +67,11 @@
                         <p>Schools, degrees, and the academic journey behind the skills.</p>
                     </div>
                 </a>
-                <a href="/hobbies" class="page-card">
-                    <div class="page-card-icon">🎨</div>
+                <a href="/projects" class="page-card">
+                    <div class="page-card-icon">🚀</div>
                     <div class="page-card-text">
-                        <h3>Hobbies</h3>
-                        <p>What I love doing when I'm not writing code.</p>
+                        <h3>Projects</h3>
+                        <p>Things I've built — from AI agents to open source plugins.</p>
                     </div>
                 </a>
                 <a href="/map" class="page-card">
@@ -74,16 +85,96 @@
         </section>
     </main>
 
-    <footer class="pg-foot" style="text-align:center;">
-        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
-            &copy; 2024 My Portfolio &mdash; Built with Flask
-            &nbsp;&nbsp;
-            <a href="/work-experience" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Work</a>
-            <a href="/education" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Education</a>
-            <a href="/hobbies" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Hobbies</a>
-            <a href="/map" style="color:rgba(255,255,255,0.75); text-decoration:none; margin:0 6px;">Map</a>
-        </p>
-    </footer>
-</body>
+    <div id="page-river"></div>
 
+    <footer class="pg-foot">
+        <div class="pg-foot-inner">
+            <div>
+                <p class="pg-foot-col-label">Quick Links</p>
+                <div class="pg-foot-links">
+                    <a href="/work-experience">Work Experience</a>
+                    <a href="/education">Education</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/map">Favorite Places</a>
+                </div>
+            </div>
+            <div>
+                <p class="pg-foot-col-label">Contact</p>
+                <p class="pg-foot-contact-email">martinlam16061@gmail.com</p>
+            </div>
+        </div>
+        <p class="pg-foot-brand-name">PORTFOLIO</p>
+        <p class="pg-foot-copy">&copy; 2024 &mdash; Built with Flask</p>
+    </footer>
+
+<script>
+(function () {
+    var pages = [
+        { url: '/education',       id: 'section-education' },
+        { url: '/work-experience', id: 'section-work'      },
+        { url: '/projects',        id: 'section-projects'  },
+        { url: '/map',             id: 'section-map'        }
+    ];
+
+    var river = document.getElementById('page-river');
+
+    function extractContent(html, id) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        doc.querySelectorAll('header, footer, script, style, link').forEach(function (el) { el.remove(); });
+        var wrapper = document.createElement('div');
+        wrapper.className = 'river-section';
+        wrapper.id = id;
+        Array.from(doc.body.childNodes).forEach(function (node) {
+            wrapper.appendChild(node.cloneNode(true));
+        });
+        return wrapper;
+    }
+
+    Promise.all(pages.map(function (p) {
+        return fetch(p.url)
+            .then(function (r) { return r.text(); })
+            .then(function (html) { return extractContent(html, p.id); });
+    })).then(function (sections) {
+        sections.forEach(function (s) { river.appendChild(s); });
+
+        /* Scroll to hash if navigated here from another page */
+        if (location.hash) {
+            var target = document.querySelector(location.hash);
+            if (target) setTimeout(function () { target.scrollIntoView({ behavior: 'smooth' }); }, 80);
+        }
+
+        /* Active nav highlight as sections scroll into view */
+        var navLinks = Array.from(document.querySelectorAll('#navMenu a'));
+        var idToPath = {
+            'home-hero':         '/',
+            'section-education': '/education',
+            'section-work':      '/work-experience',
+            'section-projects':  '/projects',
+            'section-map':       '/map'
+        };
+
+        function setActive(path) {
+            navLinks.forEach(function (a) {
+                var aPath = new URL(a.getAttribute('href'), location.origin).pathname;
+                a.classList.toggle('nav-active', aPath === path);
+            });
+        }
+
+        var hero = document.querySelector('.profile');
+        if (hero) hero.id = 'home-hero';
+
+        var secObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting && idToPath[e.target.id]) {
+                    setActive(idToPath[e.target.id]);
+                }
+            });
+        }, { rootMargin: '-15% 0px -75% 0px' });
+
+        [hero].concat(sections).forEach(function (el) { if (el) secObserver.observe(el); });
+    });
+})();
+</script>
+
+</body>
 </html>

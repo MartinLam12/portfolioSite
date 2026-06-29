@@ -10,203 +10,77 @@ app.register_blueprint(education_bp)
 
 WORK_EXPERIENCE_ENTRIES = [
     {
-        "role": "Software Engineer Intern",
-        "company": "Tech Company Inc.",
-        "dates": "Jun 2024 – Aug 2024",
-        "location": "San Francisco, CA",
-        "icon": "\U0001F4BB",
+        "role": "Strategic Courses Researcher",
+        "company": "North Seattle College",
+        "dates": "Jul 2025 – Present",
+        "location": "Seattle, WA",
+        "icon": "🔬",
         "bullets": [
-            "Built and shipped features used by 10,000+ daily active users.",
-            "Collaborated with senior engineers on REST API design and optimization.",
-            "Reduced page load time by 30% through lazy loading and caching strategies.",
+            "Conducted quantitative and qualitative data analysis to evaluate student success in courses.",
+            "Built an offline audio transcription pipeline using Python and OpenAI Whisper to transcribe sensitive audio data.",
+            "Presented findings (lack of canvas/technology support, group work, etc) to faculty stakeholders.",
         ],
-        "tags": ["Python", "React", "PostgreSQL"],
+        "tags": ["Python", "OpenAI Whisper", "Data Analysis", "Qualitative Coding"],
     },
     {
-    "role": "Your New Role",
-    "company": "Company Name",
-    "dates": "Jan 2025 – Present",
-    "location": "City, ST",
-    "icon": "🚀",
-    "bullets": [
-        "Did something impactful.",
-    ],
-    "tags": ["Python", "Flask"],
-},
-    {
-        "role": "Data Analyst",
-        "company": "Analytics Co.",
-        "dates": "Jan 2024 – May 2024",
+        "role": "Open Source Contributor",
+        "company": "CodeDay Labs",
+        "dates": "Mar 2026 – Apr 2026",
         "location": "Remote",
-        "icon": "\U0001F4CA",
+        "icon": "🌐",
         "bullets": [
-            "Developed dashboards that visualized KPIs for C-suite stakeholders.",
-            "Automated weekly reporting pipeline, saving 6 hours of manual work per week.",
-            "Performed A/B testing analysis that guided a product redesign decision.",
+            "Contributed a server-side syntax highlighting plugin to Foundry, an open-source Go CMS (186+ GitHub stars), adding colorized code rendering for 9 languages with zero runtime JS dependencies.",
+            "Built the full plugin end-to-end in Go including rendering engine, asset injection, plugin registration, and unit tests.",
         ],
-        "tags": ["SQL", "Python", "Tableau"],
+        "tags": ["Go", "Open Source", "Plugin Development"],
     },
     {
-        "role": "Web Developer",
-        "company": "Freelance",
-        "dates": "Sep 2023 – Dec 2023",
+        "role": "Software Engineering Intern",
+        "company": "Funvite (Startup)",
+        "dates": "Jul 2025 – Jan 2026",
         "location": "Remote",
-        "icon": "\U0001F310",
+        "icon": "💻",
         "bullets": [
-            "Designed and deployed responsive websites for 5 small business clients.",
-            "Integrated payment APIs and contact form backends for client projects.",
-            "Maintained ongoing client relationships and delivered on tight deadlines.",
+            "Contributed to a React Native mobile app with 3,000+ downloads using Expo, Firebase, and JavaScript.",
+            "Led UI rebranding: renamed components, applied new brand colors, replaced icons, splash screens, and logos.",
+            "Implemented time-sensitive feature toggles that automatically adjust app functionality based on event lifecycles.",
         ],
-        "tags": ["HTML", "CSS", "JavaScript"],
+        "tags": ["React Native", "Firebase", "Expo", "JavaScript"],
+    },
+    {
+        "role": "Computer Science Tutor",
+        "company": "Code Ninjas",
+        "dates": "Nov 2022 – Oct 2025",
+        "location": "Seattle, WA",
+        "icon": "🎓",
+        "bullets": [
+            "Taught programming to 7–15 students per class (ages 7–14) in JavaScript and MakeCode (block coding).",
+            "Mentored 100+ students total, guiding them through algorithms, debugging, and game-building projects.",
+        ],
+        "tags": ["JavaScript", "MakeCode", "Teaching"],
+    },
+    {
+        "role": "Undergraduate Researcher – Environmental Data Analysis",
+        "company": "North Seattle College",
+        "dates": "Sep 2024 – Dec 2024",
+        "location": "Seattle, WA",
+        "icon": "📊",
+        "bullets": [
+            "Analyzed 1,000+ PM2.5 air quality measurements across Seattle colleges to determine if historically redlined colleges were exposed to higher PM2.5 levels.",
+            "Applied Python (NumPy, Pandas, Matplotlib, Seaborn) for data cleaning, statistical analysis, and visualization.",
+        ],
+        "tags": ["Python", "NumPy", "Pandas", "Matplotlib", "Data Analysis"],
     },
 ]
 
-HOBBIES = [
+PROJECTS = [
     {
-        "title": "Photography",
-        "seed": "photography",
-        "category": "Creative",
-        "category_icon": "\U0001F30C",
-        "description": "I love capturing moments — from street photography in the city to landscapes on hiking trails. My camera is almost always within reach.",
+        "title": "ReplyPilot",
+        "subtitle": "AI Emailing Agent",
+        "date": "Apr 2026",
+        "description": "Built a full-stack AI Email Agent adopted by a local boxing gym. Features Gmail integration, AI-drafted replies with vector-based style learning (pgvector), and Stripe payments. Deployed to production on Vercel.",
+        "tags": ["Next.js", "TypeScript", "Supabase", "Google Gemini", "Stripe", "pgvector"],
         "featured": True,
-    },
-    {
-        "title": "Hiking",
-        "seed": "hiking",
-        "category": "Outdoor",
-        "category_icon": "\U0001F3D4",
-        "description": "Trail running and hiking are my go-to for clearing my head. There's nothing like reaching a summit with a good view.",
-        "featured": False,
-    },
-    {
-        "title": "Cooking",
-        "seed": "cooking",
-        "category": "Food",
-        "category_icon": "\U0001F373",
-        "description": "Cooking is my creative outlet in the kitchen. I enjoy experimenting with new cuisines and hosting dinner nights for friends.",
-        "featured": False,
-    },
-    {
-        "title": "Gaming",
-        "seed": "gaming2024",
-        "category": "Gaming",
-        "category_icon": "\U0001F3AE",
-        "description": "From indie games to competitive FPS titles — gaming is how I unwind and connect with friends online.",
-        "featured": False,
-    },
-    {
-        "title": "Music",
-        "seed": "music2024",
-        "category": "Music",
-        "category_icon": "\U0001F3B5",
-        "description": "I play guitar and enjoy discovering new artists across genres. Music is always playing in the background when I code.",
-        "featured": False,
-    },
-    {
-        "title": "Reading",
-        "seed": "reading2024",
-        "category": "Learning",
-        "category_icon": "\U0001F4DA",
-        "description": "I read mostly non-fiction — tech, psychology, and history. Currently working through a book on systems thinking.",
-        "featured": False,
-    },
-]
-
-# ── Work Experience Data ─────────────────────────────────────────────────────
-experiences = [
-    {
-        'role': 'Software Engineer Intern',
-        'company': 'Tech Company Inc.',
-        'start': 'Jun 2024',
-        'end': 'Aug 2024',
-        'location': 'San Francisco, CA',
-        'icon': '💻',
-        'bullets': [
-            'Built and shipped features used by 10,000+ daily active users.',
-            'Collaborated with senior engineers on REST API design and optimization.',
-            'Reduced page load time by 30% through lazy loading and caching strategies.',
-        ],
-        'tags': ['Python', 'React', 'PostgreSQL'],
-    },
-    {
-        'role': 'Data Analyst',
-        'company': 'Analytics Co.',
-        'start': 'Jan 2024',
-        'end': 'May 2024',
-        'location': 'Remote',
-        'icon': '📊',
-        'bullets': [
-            'Developed dashboards that visualized KPIs for C-suite stakeholders.',
-            'Automated weekly reporting pipeline, saving 6 hours of manual work per week.',
-            'Performed A/B testing analysis that guided a product redesign decision.',
-        ],
-        'tags': ['SQL', 'Python', 'Tableau'],
-    },
-    {
-        'role': 'Web Developer',
-        'company': 'Freelance',
-        'start': 'Sep 2023',
-        'end': 'Dec 2023',
-        'location': 'Remote',
-        'icon': '🌐',
-        'bullets': [
-            'Designed and deployed responsive websites for 5 small business clients.',
-            'Integrated payment APIs and contact form backends for client projects.',
-            'Maintained ongoing client relationships and delivered on tight deadlines.',
-        ],
-        'tags': ['HTML', 'CSS', 'JavaScript'],
-    },
-]
-
-# ── Hobbies Data ─────────────────────────────────────────────────────────────
-hobbies_data = [
-    {
-        'name': 'Photography',
-        'category': 'Creative',
-        'emoji': '🌐',
-        'image': 'https://picsum.photos/seed/photography/800/500',
-        'desc': 'I love capturing moments — from street photography in the city to landscapes on hiking trails. My camera is almost always within reach.',
-        'featured': True,
-    },
-    {
-        'name': 'Hiking',
-        'category': 'Outdoor',
-        'emoji': '⛺',
-        'image': 'https://picsum.photos/seed/hiking/600/400',
-        'desc': "Trail running and hiking are my go-to for clearing my head. There's nothing like reaching a summit with a good view.",
-        'featured': False,
-    },
-    {
-        'name': 'Cooking',
-        'category': 'Food',
-        'emoji': '🍳',
-        'image': 'https://picsum.photos/seed/cooking/600/400',
-        'desc': 'Cooking is my creative outlet in the kitchen. I enjoy experimenting with new cuisines and hosting dinner nights for friends.',
-        'featured': False,
-    },
-    {
-        'name': 'Gaming',
-        'category': 'Gaming',
-        'emoji': '🎮',
-        'image': 'https://picsum.photos/seed/gaming2024/600/400',
-        'desc': 'From indie games to competitive FPS titles — gaming is how I unwind and connect with friends online.',
-        'featured': False,
-    },
-    {
-        'name': 'Music',
-        'category': 'Music',
-        'emoji': '🎵',
-        'image': 'https://picsum.photos/seed/music2024/600/400',
-        'desc': 'I play guitar and enjoy discovering new artists across genres. Music is always playing in the background when I code.',
-        'featured': False,
-    },
-    {
-        'name': 'Reading',
-        'category': 'Learning',
-        'emoji': '📚',
-        'image': 'https://picsum.photos/seed/reading2024/600/400',
-        'desc': 'I read mostly non-fiction — tech, psychology, and history. Currently working through a book on systems thinking.',
-        'featured': False,
     },
 ]
 
@@ -214,16 +88,17 @@ hobbies_data = [
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
+    return render_template('index.html', title="Martin Lam", url=os.getenv("URL"))
 
 
 @app.route('/work-experience')
 def work_experience():
     return render_template('work_experience.html', entries=WORK_EXPERIENCE_ENTRIES)
+
 @app.route('/map')
 def map():
     return render_template('map.html', url=os.getenv("URL"))
 
-@app.route('/hobbies')
-def hobbies():
-    return render_template('hobbies.html', hobbies=HOBBIES)
+@app.route('/projects')
+def projects():
+    return render_template('hobbies.html', projects=PROJECTS)

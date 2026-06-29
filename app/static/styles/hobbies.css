@@ -1,52 +1,44 @@
 /* =====================================================
-   Hobbies Page Styles
+   Hobbies Page
    ===================================================== */
 
-/* Page Header */
 .hb-page-header {
-    background: linear-gradient(135deg, #1C539F 0%, #0d3875 100%);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
     text-align: center;
-    padding: 60px 20px 80px;
-    position: relative;
-}
-
-.hb-page-header::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #f5f5f9;
-    clip-path: ellipse(55% 100% at 50% 100%);
+    padding: 100px 20px 100px;
 }
 
 .hb-page-title {
+    font-family: "Syne", sans-serif;
     font-size: 48px;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 12px;
-    letter-spacing: -0.5px;
+    font-weight: 800;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 14px;
 }
 
 .hb-page-subtitle {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    color: var(--muted);
     margin: 0;
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* Intro */
 .hb-intro {
     max-width: 680px;
     margin: 0 auto;
-    padding: 48px 24px 10px;
+    padding: 60px 24px 16px;
     text-align: center;
 }
 
 .hb-intro p {
-    font-size: 17px;
-    color: #4b5563;
+    font-size: 16px;
+    color: var(--muted);
     line-height: 1.75;
     margin: 0;
 }
@@ -55,7 +47,7 @@
 .hb-grid-section {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 24px 80px;
+    padding: 40px 24px 100px;
 }
 
 /* CSS Grid – 3 columns, featured card spans 2 columns */
@@ -63,24 +55,21 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 320px;
-    gap: 20px;
+    gap: 1px;
+    background: var(--border);
 }
 
 /* Card Base */
 .hb-card {
     position: relative;
-    border-radius: 16px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 4px 18px rgba(28, 83, 159, 0.10);
-    background: #ffffff;
+    background: var(--surface);
     cursor: default;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: opacity 0.25s;
 }
 
-.hb-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 36px rgba(28, 83, 159, 0.18);
-}
+.hb-card:hover { opacity: 0.92; }
 
 /* Featured card spans 2 columns and 2 rows */
 .hb-card--featured {
@@ -95,9 +84,7 @@
     bottom: 64px;
 }
 
-.hb-card--featured .hb-card-img-wrap {
-    bottom: 72px;
-}
+.hb-card--featured .hb-card-img-wrap { bottom: 72px; }
 
 .hb-card-img {
     width: 100%;
@@ -107,15 +94,13 @@
     transition: transform 0.4s ease;
 }
 
-.hb-card:hover .hb-card-img {
-    transform: scale(1.05);
-}
+.hb-card:hover .hb-card-img { transform: scale(1.04); }
 
-/* Hover overlay with description */
+/* Hover overlay */
 .hb-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(13, 56, 117, 0.0) 0%, rgba(13, 56, 117, 0.82) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 100%);
     display: flex;
     align-items: flex-end;
     padding: 20px;
@@ -123,20 +108,16 @@
     transition: opacity 0.3s ease;
 }
 
-.hb-card:hover .hb-card-overlay {
-    opacity: 1;
-}
+.hb-card:hover .hb-card-overlay { opacity: 1; }
 
 .hb-card-desc {
-    color: #ffffff;
-    font-size: 14px;
+    color: var(--text);
+    font-size: 13px;
     line-height: 1.6;
     margin: 0;
 }
 
-.hb-card--featured .hb-card-desc {
-    font-size: 16px;
-}
+.hb-card--featured .hb-card-desc { font-size: 15px; }
 
 /* Card Footer */
 .hb-card-footer {
@@ -145,12 +126,12 @@
     left: 0;
     right: 0;
     height: 64px;
-    background: #ffffff;
+    background: var(--surface);
     padding: 10px 16px 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-top: 1px solid rgba(28, 83, 159, 0.07);
+    border-top: 1px solid var(--border);
 }
 
 .hb-card--featured .hb-card-footer {
@@ -159,33 +140,119 @@
 }
 
 .hb-category {
-    font-size: 11px;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
     font-weight: 600;
-    color: #1C539F;
+    color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 3px;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
 }
 
 .hb-card-title {
-    font-size: 17px;
+    font-family: "Syne", sans-serif;
+    font-size: 15px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text);
     margin: 0;
     line-height: 1.2;
 }
 
-.hb-card--featured .hb-card-title {
-    font-size: 22px;
+.hb-card--featured .hb-card-title { font-size: 20px; }
+
+/* =====================================================
+   Projects Grid
+   ===================================================== */
+
+.proj-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
 }
 
-/* Footer */
-.hb-footer {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: #1C539F;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 14px;
+.proj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: var(--border);
+}
+
+.proj-card {
+    background: var(--surface);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+}
+
+.proj-card:hover { background: color-mix(in srgb, var(--surface) 85%, var(--text) 15%); }
+
+.proj-card--featured {
+    grid-column: 1 / -1;
+}
+
+.proj-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.proj-date {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.proj-title {
+    font-family: "Syne", sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.proj-card--featured .proj-title { font-size: 36px; }
+
+.proj-subtitle-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.proj-desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin: 0;
+    flex: 1;
+}
+
+.proj-card--featured .proj-desc { font-size: 16px; max-width: 680px; }
+
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.proj-tag {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--border);
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 /* =====================================================
@@ -196,7 +263,6 @@
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 280px;
     }
-
     .hb-card--featured {
         grid-column: span 2;
         grid-row: span 1;
@@ -208,13 +274,9 @@
         grid-template-columns: 1fr;
         grid-auto-rows: 300px;
     }
-
     .hb-card--featured {
         grid-column: span 1;
         grid-row: span 1;
     }
-
-    .hb-page-title {
-        font-size: 32px;
-    }
+    .hb-page-title { font-size: 32px; }
 }
