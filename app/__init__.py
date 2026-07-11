@@ -1,4 +1,5 @@
 import datetime
+import hashlib
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 import os
@@ -15,6 +16,10 @@ mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     host=os.getenv("MYSQL_HOST"),
     port=3306
 )
+
+@app.template_filter('gravatar_hash')
+def gravatar_hash(email):
+    return hashlib.sha256(email.strip().lower().encode('utf-8')).hexdigest()
 
 class TimelinePost(Model):
     name = CharField()
@@ -152,3 +157,8 @@ def delete_time_line_post(post_id):
         return {'error': 'not found'}, 404
     post.delete_instance()
     return {'deleted': post_id}
+
+@app.route('/timeline')
+def timeline():
+    posts = TimelinePost.select().order_by(TimelinePost.created_at.desc())
+    return render_template('timeline.html', title="Timeline", posts=posts)
