@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/timeline.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% include "nav.html" %}
+
+    <div class="profile timeline-hero">
+        <h1>Timeline</h1>
+        <p class="profile-subtitle">Say something &nbsp;·&nbsp; newest first</p>
+    </div>
+
+    <main class="content">
+        <section class="timeline-form-section">
+            <h2 class="section-heading">Post</h2>
+            <form id="timeline-form" class="timeline-form">
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <textarea name="content" id="content" placeholder="What's on your mind?" rows="3" required></textarea>
+                <button type="submit" class="profile-cta timeline-submit">Post</button>
+            </form>
+        </section>
+
+        <section class="timeline-feed-section">
+            <h2 class="section-heading">Feed</h2>
+            <ul id="timeline-list" class="timeline-list">
+                {% for post in posts %}
+                <li class="timeline-item" data-id="{{ post.id }}">
+                    <img class="timeline-avatar" src="https://www.gravatar.com/avatar/{{ post.email | gravatar_hash }}?d=identicon&s=64" alt="">
+                    <div class="timeline-item-body">
+                        <div class="timeline-item-header">
+                            <span class="timeline-name">{{ post.name }}</span>
+                            <time>{{ post.created_at.strftime('%b %d, %Y %I:%M %p') }}</time>
+                        </div>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </li>
+                {% else %}
+                <li class="timeline-empty">No posts yet — be the first.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer class="pg-foot">
+        <div class="pg-foot-inner">
+            <div>
+                <p class="pg-foot-col-label">Quick Links</p>
+                <div class="pg-foot-links">
+                    <a href="/work-experience">Work Experience</a>
+                    <a href="/education">Education</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/map">Favorite Places</a>
+                </div>
+            </div>
+            <div>
+                <p class="pg-foot-col-label">Contact</p>
+                <p class="pg-foot-contact-email">martinlam16061@gmail.com</p>
+            </div>
+        </div>
+        <p class="pg-foot-brand-name">PORTFOLIO</p>
+        <p class="pg-foot-copy">&copy; 2024 &mdash; Built with Flask</p>
+    </footer>
+
+<script>
+async function sha256Hex(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+document.getElementById('timeline-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const content = form.content.value.trim();
+
+    const res = await fetch('/api/timeline_post', {
+        method: 'POST',
+        body: new URLSearchParams({ name, email, content })
+    });
+
+    if (!res.ok) {
+        alert('Something went wrong posting that.');
+        return;
+    }
+
+    const post = await res.json();
+    const hash = await sha256Hex(email.toLowerCase());
+
+    const list = document.getElementById('timeline-list');
+    const empty = list.querySelector('.timeline-empty');
+    if (empty) empty.remove();
+
+    const li = document.createElement('li');
+    li.className = 'timeline-item';
+    li.dataset.id = post.id;
+    li.innerHTML = `
+        <img class="timeline-avatar" src="https://www.gravatar.com/avatar/${hash}?d=identicon&s=64" alt="">
+        <div class="timeline-item-body">
+            <div class="timeline-item-header">
+                <span class="timeline-name">${post.name}</span>
+                <time>${new Date(post.created_at).toLocaleString()}</time>
+            </div>
+            <p>${post.content}</p>
+        </div>
+    `;
+
+    list.insertBefore(li, list.firstChild);
+    form.reset();
+});
+</script>
+</body>
+</html>
