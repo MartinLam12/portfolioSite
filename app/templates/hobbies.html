@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:title" content="Projects">
     <meta property="og:description" content="Things I've built">
+    <script>document.documentElement.classList.add('js');</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/styles/main.css">
-    <link rel="stylesheet" href="../static/styles/hobbies.css">
-    <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/hobbies.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
     <title>Projects</title>
 </head>
 
@@ -21,47 +22,72 @@
 
     {% include "nav.html" %}
 
-    <!-- Page Header -->
-    <div class="hb-page-header">
-        <h1 class="hb-page-title">Projects</h1>
-        <p class="hb-page-subtitle">Things I've built</p>
-    </div>
-
-    <!-- Intro -->
-    <section class="hb-intro">
-        <p>Here are some of the projects I've built — from AI agents to open source contributions.</p>
-    </section>
-
-    <!-- Projects Grid -->
-    <section class="proj-section">
-        <div class="proj-grid">
+    <div class="shell page-shell">
+        <div class="page-main">
+            <p class="eyebrow" data-reveal>Selected Works</p>
 
             {% for project in projects %}
-            <div class="proj-card{{ ' proj-card--featured' if project.featured else '' }}">
-                <div class="proj-card-top">
-                    <span class="proj-date">{{ project.date }}</span>
-                    <h2 class="proj-title">{{ project.title }}</h2>
-                    {% if project.subtitle %}
-                    <p class="proj-subtitle-label">{{ project.subtitle }}</p>
-                    {% endif %}
+            <article class="proj-entry" data-reveal-group>
+                <div class="proj-head" data-reveal>
+                    <h2 class="proj-title">
+                        {{ project.title }}
+                        {% if project.url %}
+                        <a class="proj-arrow" href="{{ project.url }}" target="_blank" rel="noopener" aria-label="Open {{ project.title }}">&#8599;</a>
+                        {% endif %}
+                    </h2>
+                    <p class="proj-kind">{{ project.subtitle }} / {{ project.date }}</p>
                 </div>
-                <p class="proj-desc">{{ project.description }}</p>
-                <div class="proj-tags">
-                    {% for tag in project.tags %}
-                    <span class="proj-tag">{{ tag }}</span>
+                <p class="proj-desc" data-reveal>{{ project.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+
+        <aside class="page-side" data-reveal-group>
+            <div class="side-group">
+                <h2 class="side-heading" data-reveal>Technology</h2>
+                <div class="pill-row">
+                    {% for tag in projects | map(attribute='tags') | sum(start=[]) | unique %}
+                    <span class="pill" data-reveal>{{ tag }}</span>
                     {% endfor %}
                 </div>
             </div>
-            {% endfor %}
+        </aside>
+    </div>
 
-        </div>
-    </section>
+    <footer class="mini-foot">&copy; 2024 &mdash; Built with Flask</footer>
 
-    <footer class="pg-foot" style="text-align:center;">
-        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
-            &copy; 2024 My Portfolio &mdash; Built with Flask
-        </p>
-    </footer>
+<script>
+/* Scroll reveal — same pattern as homepage */
+(function () {
+    var els = document.querySelectorAll('[data-reveal]');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-revealed'); });
+        return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            io.unobserve(entry.target);
+
+            var items = entry.target.hasAttribute('data-reveal')
+                ? [entry.target]
+                : Array.from(entry.target.querySelectorAll('[data-reveal]'));
+
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = Math.min(i * 60, 480) + 'ms';
+                el.classList.add('is-revealed');
+            });
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal-group]').forEach(function (g) { io.observe(g); });
+    els.forEach(function (el) {
+        if (!el.closest('[data-reveal-group]')) io.observe(el);
+    });
+})();
+</script>
 
 </body>
 </html>

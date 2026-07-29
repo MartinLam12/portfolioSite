@@ -1,122 +1,49 @@
-/* =====================================================
-   Education Page
-   ===================================================== */
+/* ====== EDUCATION PAGE ====== */
 
-.edu-header {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    text-align: center;
-    padding: 100px 20px 100px;
-}
-
-.edu-header-title {
-    font-family: "Syne", sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--text);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0 0 14px;
-}
-
-.edu-header-subtitle {
-    font-size: 14px;
-    color: var(--muted);
-    margin: 0;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-/* Card grid */
-.edu-grid {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 80px 24px 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-}
-
-/* Individual card */
-.edu-card {
-    background: var(--surface);
-    border-radius: 0;
-    padding: 32px 30px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    transition: background 0.2s, border-color 0.2s;
-    border: none;
-    outline: 1px solid transparent;
-}
-
-.edu-card:hover {
-    background: #1e1e1e;
-    outline-color: rgba(255, 255, 255, 0.14);
-}
-
-/* Icon */
-.edu-icon {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 0;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-/* Card body */
-.edu-body {
-    flex: 1;
-    min-width: 0;
+.edu-entry + .edu-entry {
+    border-top: 1px solid var(--border);
+    padding-top: 56px;
+    margin-top: 56px;
 }
 
 .edu-school {
     font-family: "Syne", sans-serif;
-    font-size: 18px;
+    font-size: var(--fs-h2);
     font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--text-bright);
+    margin: 0 0 8px;
+}
+
+.edu-degree {
+    font-size: var(--fs-body);
     color: var(--text);
     margin: 0 0 6px;
 }
 
-.edu-degree {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--muted);
-    margin: 0 0 14px;
-}
-
 .edu-dates {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: var(--fs-caption);
     color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 3px 12px;
-    border-radius: 0;
-    margin-bottom: 16px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.edu-desc {
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--muted);
+    letter-spacing: 0.04em;
     margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    .edu-header-title { font-size: 32px; }
-    .edu-card { flex-direction: column; gap: 12px; }
-    .edu-icon { width: 42px; height: 42px; font-size: 20px; }
-    .edu-school { font-size: 16px; }
+.edu-desc {
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 620px;
+    margin: 24px 0 0;
+}
+
+@media (max-width: 640px) {
+    .edu-entry + .edu-entry {
+        padding-top: 44px;
+        margin-top: 44px;
+    }
+
+    .edu-desc {
+        margin-top: 20px;
+    }
 }

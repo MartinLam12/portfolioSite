@@ -129,10 +129,6 @@ def index():
 def work_experience():
     return render_template('work_experience.html', entries=WORK_EXPERIENCE_ENTRIES)
 
-@app.route('/map')
-def map():
-    return render_template('map.html', url=os.getenv("URL"))
-
 @app.route('/projects')
 def projects():
     return render_template('hobbies.html', projects=PROJECTS)

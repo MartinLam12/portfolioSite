@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:title" content="Work Experience">
     <meta property="og:description" content="My Work Experience">
+    <script>document.documentElement.classList.add('js');</script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/styles/main.css">
-    <link rel="stylesheet" href="../static/styles/work_experience.css">
-    <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/work_experience.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
     <title>Work Experience</title>
 </head>
 
@@ -20,55 +22,72 @@
 
     {% include "nav.html" %}
 
-    <!-- Page Header -->
-    <div class="we-page-header">
-        <h1 class="we-page-title">Work Experience</h1>
-        <p class="we-page-subtitle">My professional journey so far</p>
-    </div>
-
-    <!-- Timeline Section -->
-    <section class="we-timeline-section">
-        <div class="we-timeline">
+    <div class="shell page-shell">
+        <div class="page-main">
+            <p class="eyebrow" data-reveal>Work Experience</p>
 
             {% for entry in entries %}
-            <div class="we-card {{ 'we-card--left' if loop.index0 % 2 == 0 else 'we-card--right' }}">
-                <div class="we-card-dot"></div>
-                <div class="we-card-body">
-                    <div class="we-card-header">
-                        <div class="we-card-icon">
-                            <span>{{ entry.icon }}</span>
-                        </div>
-                        <div class="we-card-meta">
-                            <h2 class="we-card-role">{{ entry.role }}</h2>
-                            <h3 class="we-card-company">{{ entry.company }}</h3>
-                        </div>
-                    </div>
-                    <div class="we-card-details">
-                        <span class="we-badge we-badge--date">{{ entry.dates }}</span>
-                        <span class="we-badge we-badge--location">&#128205; {{ entry.location }}</span>
-                    </div>
-                    <ul class="we-card-list">
-                        {% for bullet in entry.bullets %}
-                        <li>{{ bullet }}</li>
-                        {% endfor %}
-                    </ul>
-                    <div class="we-card-tags">
-                        {% for tag in entry.tags %}
-                        <span class="we-tag">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
+            <article class="we-entry" data-reveal-group>
+                <div data-reveal>
+                    <h2 class="we-role">{{ entry.role }}</h2>
+                    <p class="we-company">{{ entry.company }}</p>
+                    <p class="we-meta">{{ entry.dates }} &middot; {{ entry.location }}</p>
+                </div>
+                <ul class="we-bullets" data-reveal>
+                    {% for bullet in entry.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+            {% endfor %}
+        </div>
+
+        <aside class="page-side" data-reveal-group>
+            <div class="side-group">
+                <h2 class="side-heading" data-reveal>Skills</h2>
+                <div class="pill-row">
+                    {% for tag in entries | map(attribute='tags') | sum(start=[]) | unique %}
+                    <span class="pill" data-reveal>{{ tag }}</span>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
+        </aside>
+    </div>
 
-        </div>
-    </section>
+    <footer class="mini-foot">&copy; 2024 &mdash; Built with Flask</footer>
 
-    <footer class="pg-foot" style="text-align:center;">
-        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
-            &copy; 2024 My Portfolio &mdash; Built with Flask
-        </p>
-    </footer>
+<script>
+/* Scroll reveal — same pattern as homepage */
+(function () {
+    var els = document.querySelectorAll('[data-reveal]');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-revealed'); });
+        return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            io.unobserve(entry.target);
+
+            var items = entry.target.hasAttribute('data-reveal')
+                ? [entry.target]
+                : Array.from(entry.target.querySelectorAll('[data-reveal]'));
+
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = Math.min(i * 60, 480) + 'ms';
+                el.classList.add('is-revealed');
+            });
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal-group]').forEach(function (g) { io.observe(g); });
+    els.forEach(function (el) {
+        if (!el.closest('[data-reveal-group]')) io.observe(el);
+    });
+})();
+</script>
 
 </body>
 </html>

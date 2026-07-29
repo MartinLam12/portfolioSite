@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -10,70 +11,122 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/education.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/work_experience.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/hobbies.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/travel-map.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
     <title>{{ title }}</title>
 </head>
 <body>
     {% include "nav.html" %}
 
-    <div class="profile">
-        <div id="profile-picture" class="profile-picture blank"></div>
-        <h1>{{ title }}</h1>
-        <p class="profile-subtitle">CS Student &nbsp;·&nbsp; MLH Fellow &nbsp;·&nbsp; Seattle, WA</p>
-        <div class="profile-cta-row">
-            <a href="/work-experience" class="profile-cta">💼 Work</a>
-            <a href="/education" class="profile-cta">🎓 Education</a>
-            <a href="/projects" class="profile-cta">🚀 Projects</a>
-            <a href="/map" class="profile-cta">🗺️ Places</a>
+    <section class="shell hero">
+        <div class="hero-main" data-reveal-group>
+            <h1 class="hero-headline" data-reveal>I'm Martin &mdash; a CS student who builds and ships <span class="hero-accent">open&#8209;source</span> software.</h1>
+
+            <hr class="hero-rule" data-reveal>
+
+            <div class="hero-status-row">
+                <div class="status-item" data-reveal>
+                    <p class="status-label">Based In</p>
+                    <p class="status-value">Seattle, WA</p>
+                </div>
+                <div class="status-item" data-reveal>
+                    <p class="status-label">Currently</p>
+                    <p class="status-value">MLH Fellow</p>
+                </div>
+                <div class="status-item" data-reveal>
+                    <p class="status-label">Status</p>
+                    <p class="status-value"><span class="status-dot"></span>Open to opportunities</p>
+                </div>
+            </div>
+
+            <a href="/work-experience" class="hero-link" data-reveal>View work <span class="hero-link-arrow">&rarr;</span></a>
+
+            <!-- Space Needle — decorative -->
+            <svg class="hero-needle" viewBox="0 0 140 340" fill="none" stroke="#f4f4f1" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="70" cy="7" r="2.5"/>
+                <path d="M70 10 L70 34"/>
+                <path d="M52 40 Q70 26 88 40"/>
+                <ellipse cx="70" cy="46" rx="52" ry="11"/>
+                <ellipse cx="70" cy="60" rx="34" ry="8"/>
+                <path d="M18 46 L36 60"/>
+                <path d="M122 46 L104 60"/>
+                <path d="M48 66 L60 96"/>
+                <path d="M92 66 L80 96"/>
+                <path d="M60 96 L60 240"/>
+                <path d="M80 96 L80 240"/>
+                <path d="M60 252 L80 268"/>
+                <path d="M80 252 L60 268"/>
+                <path d="M60 240 Q56 285 26 322"/>
+                <path d="M80 240 Q84 285 114 322"/>
+                <path d="M70 240 L70 322"/>
+                <path d="M14 326 L126 326"/>
+            </svg>
         </div>
-    </div>
+
+        <aside class="hero-side" data-reveal-group>
+            <div class="side-group">
+                <h2 class="side-heading" data-reveal>Experience</h2>
+                <div class="side-entry" data-reveal>
+                    <p class="side-entry-title">Strategic Courses Researcher</p>
+                    <p class="side-entry-sub">North Seattle College</p>
+                    <p class="side-entry-date">Jul 2025 &mdash; Present</p>
+                </div>
+                <div class="side-entry" data-reveal>
+                    <p class="side-entry-title">Open Source Contributor</p>
+                    <p class="side-entry-sub">CodeDay Labs</p>
+                    <p class="side-entry-date">Mar 2026 &mdash; Apr 2026</p>
+                </div>
+                <div class="side-entry" data-reveal>
+                    <p class="side-entry-title">Software Engineering Intern</p>
+                    <p class="side-entry-sub">Funvite</p>
+                    <p class="side-entry-date">Jul 2025 &mdash; Jan 2026</p>
+                </div>
+            </div>
+
+            <div class="side-group">
+                <h2 class="side-heading" data-reveal>Highlights</h2>
+                <div class="side-entry" data-reveal>
+                    <p class="side-entry-title">MLH Fellow</p>
+                    <p class="side-entry-sub">Major League Hacking</p>
+                    <p class="side-entry-date">Summer 2026</p>
+                </div>
+                <div class="side-entry" data-reveal>
+                    <p class="side-entry-title">100+ Students Mentored</p>
+                    <p class="side-entry-sub">Code Ninjas &middot; Seattle</p>
+                    <p class="side-entry-date">2022 &mdash; 2025</p>
+                </div>
+            </div>
+        </aside>
+    </section>
 
     <main class="content">
-        <section class="about-section">
-            <h2 class="section-heading">About Me</h2>
-            <p>Welcome to my website! Here you can find my work experience and creations</p>
+        <section class="about-section" data-reveal-group>
+            <h2 class="section-heading" data-reveal>About</h2>
+            <p data-reveal>Welcome to my website! Here you can find my work experience and creations</p>
         </section>
-    </main>
 
-    <div class="marquee-strip">
-        <div class="marquee-inner">
-            <span>DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW · DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW ·</span>
-            <span>DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW · DEVELOPER · BUILDER · OPEN SOURCE · MLH FELLOW ·</span>
-        </div>
-    </div>
-
-    <main class="content" style="padding-top:60px">
-        <section class="explore-section">
-            <h2 class="section-heading">Explore</h2>
-            <div class="page-cards-grid">
-                <a href="/work-experience" class="page-card">
-                    <div class="page-card-icon">💼</div>
-                    <div class="page-card-text">
+        <section class="explore-section" data-reveal-group>
+            <h2 class="section-heading" data-reveal>Explore</h2>
+            <div class="page-rows">
+                <a href="/work-experience" class="page-row" data-reveal>
+                    <div class="page-row-text">
                         <h3>Work Experience</h3>
                         <p>Internships, roles, and projects I've shipped professionally.</p>
                     </div>
+                    <span class="page-row-arrow">&rarr;</span>
                 </a>
-                <a href="/education" class="page-card">
-                    <div class="page-card-icon">🎓</div>
-                    <div class="page-card-text">
+                <a href="/education" class="page-row" data-reveal>
+                    <div class="page-row-text">
                         <h3>Education</h3>
                         <p>Schools, degrees, and the academic journey behind the skills.</p>
                     </div>
+                    <span class="page-row-arrow">&rarr;</span>
                 </a>
-                <a href="/projects" class="page-card">
-                    <div class="page-card-icon">🚀</div>
-                    <div class="page-card-text">
+                <a href="/projects" class="page-row" data-reveal>
+                    <div class="page-row-text">
                         <h3>Projects</h3>
-                        <p>Things I've built — from AI agents to open source plugins.</p>
+                        <p>Things I've built &mdash; from AI agents to open source plugins.</p>
                     </div>
-                </a>
-                <a href="/map" class="page-card">
-                    <div class="page-card-icon">🗺️</div>
-                    <div class="page-card-text">
-                        <h3>Favorite Places</h3>
-                        <p>A map of spots around the world that mean something to me.</p>
-                    </div>
+                    <span class="page-row-arrow">&rarr;</span>
                 </a>
             </div>
         </section>
@@ -89,7 +142,6 @@
                     <a href="/work-experience">Work Experience</a>
                     <a href="/education">Education</a>
                     <a href="/projects">Projects</a>
-                    <a href="/map">Favorite Places</a>
                 </div>
             </div>
             <div>
@@ -102,12 +154,53 @@
     </footer>
 
 <script>
+/* Scroll reveal: fade in + shift up, staggered inside [data-reveal-group].
+   window.__watchReveal(root) is reused for river-loaded sections. */
+(function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window);
+    var io = null;
+
+    if (!reduced) {
+        io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                io.unobserve(entry.target);
+
+                var items = entry.target.hasAttribute('data-reveal')
+                    ? [entry.target]
+                    : Array.from(entry.target.querySelectorAll('[data-reveal]'));
+
+                items.forEach(function (el, i) {
+                    el.style.transitionDelay = Math.min(i * 60, 480) + 'ms';
+                    el.classList.add('is-revealed');
+                });
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }
+
+    function watch(root) {
+        var els = root.querySelectorAll('[data-reveal]');
+        if (reduced) {
+            els.forEach(function (el) { el.classList.add('is-revealed'); });
+            return;
+        }
+        root.querySelectorAll('[data-reveal-group]').forEach(function (g) { io.observe(g); });
+        els.forEach(function (el) {
+            if (!el.closest('[data-reveal-group]')) io.observe(el);
+        });
+    }
+
+    watch(document);
+    window.__watchReveal = watch;
+})();
+</script>
+
+<script>
 (function () {
     var pages = [
         { url: '/education',       id: 'section-education' },
         { url: '/work-experience', id: 'section-work'      },
-        { url: '/projects',        id: 'section-projects'  },
-        { url: '/map',             id: 'section-map'        }
+        { url: '/projects',        id: 'section-projects'  }
     ];
 
     var river = document.getElementById('page-river');
@@ -129,43 +222,16 @@
             .then(function (r) { return r.text(); })
             .then(function (html) { return extractContent(html, p.id); });
     })).then(function (sections) {
-        sections.forEach(function (s) { river.appendChild(s); });
+        sections.forEach(function (s) {
+            river.appendChild(s);
+            if (window.__watchReveal) window.__watchReveal(s);
+        });
 
         /* Scroll to hash if navigated here from another page */
         if (location.hash) {
             var target = document.querySelector(location.hash);
             if (target) setTimeout(function () { target.scrollIntoView({ behavior: 'smooth' }); }, 80);
         }
-
-        /* Active nav highlight as sections scroll into view */
-        var navLinks = Array.from(document.querySelectorAll('#navMenu a'));
-        var idToPath = {
-            'home-hero':         '/',
-            'section-education': '/education',
-            'section-work':      '/work-experience',
-            'section-projects':  '/projects',
-            'section-map':       '/map'
-        };
-
-        function setActive(path) {
-            navLinks.forEach(function (a) {
-                var aPath = new URL(a.getAttribute('href'), location.origin).pathname;
-                a.classList.toggle('nav-active', aPath === path);
-            });
-        }
-
-        var hero = document.querySelector('.profile');
-        if (hero) hero.id = 'home-hero';
-
-        var secObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting && idToPath[e.target.id]) {
-                    setActive(idToPath[e.target.id]);
-                }
-            });
-        }, { rootMargin: '-15% 0px -75% 0px' });
-
-        [hero].concat(sections).forEach(function (el) { if (el) secObserver.observe(el); });
     });
 })();
 </script>

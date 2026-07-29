@@ -1,251 +1,58 @@
-/* =====================================================
-   Work Experience Page
-   ===================================================== */
+/* ====== WORK EXPERIENCE PAGE ====== */
 
-.we-page-header {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    text-align: center;
-    padding: 100px 20px 100px;
+.we-entry + .we-entry {
+    border-top: 1px solid var(--border);
+    padding-top: 56px;
+    margin-top: 56px;
 }
 
-.we-page-title {
+.we-role {
     font-family: "Syne", sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--text);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0 0 14px;
-}
-
-.we-page-subtitle {
-    font-size: 14px;
-    color: var(--muted);
-    margin: 0;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-/* Timeline Section */
-.we-timeline-section {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 80px 20px 100px;
-}
-
-.we-timeline {
-    position: relative;
-}
-
-/* Center vertical line */
-.we-timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--border);
-    transform: translateX(-50%);
-}
-
-/* Cards */
-.we-card {
-    position: relative;
-    width: 44%;
-    margin-bottom: 48px;
-}
-
-.we-card--left { left: 0; }
-.we-card--right { left: 56%; }
-
-/* Timeline dot */
-.we-card-dot {
-    position: absolute;
-    top: 24px;
-    width: 10px;
-    height: 10px;
-    background: var(--surface);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.we-card--left .we-card-dot  { right: -29px; }
-.we-card--right .we-card-dot { left: -29px; }
-
-/* Card Body */
-.we-card-body {
-    background: var(--surface);
-    border-radius: 0;
-    padding: 24px 26px;
-    border: 1px solid var(--border);
-    transition: border-color 0.2s;
-}
-
-.we-card-body:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Connector arrows — match card bg */
-.we-card--left .we-card-body::after {
-    content: '';
-    position: absolute;
-    top: 30px;
-    right: -18px;
-    border-width: 8px 0 8px 18px;
-    border-style: solid;
-    border-color: transparent transparent transparent var(--surface);
-}
-
-.we-card--right .we-card-body::before {
-    content: '';
-    position: absolute;
-    top: 30px;
-    left: -18px;
-    border-width: 8px 18px 8px 0;
-    border-style: solid;
-    border-color: transparent var(--surface) transparent transparent;
-}
-
-/* Card Header */
-.we-card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 14px;
-}
-
-.we-card-icon {
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.we-card-meta {
-    flex: 1;
-    min-width: 0;
-}
-
-.we-card-role {
-    font-family: "Syne", sans-serif;
-    font-size: 16px;
+    font-size: var(--fs-h2);
     font-weight: 700;
-    color: var(--text);
-    margin: 0 0 4px;
-    line-height: 1.2;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--text-bright);
+    margin: 0 0 8px;
 }
 
-.we-card-company {
-    font-size: 13px;
-    font-weight: 500;
+.we-company {
+    font-size: var(--fs-body);
+    color: var(--text);
+    margin: 0 0 6px;
+}
+
+.we-meta {
+    font-size: var(--fs-caption);
     color: var(--muted);
+    letter-spacing: 0.04em;
     margin: 0;
 }
 
-/* Badges */
-.we-card-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 14px;
-}
-
-.we-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 0;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    border: 1px solid var(--border);
-    background: transparent;
-}
-
-.we-badge--date     { color: var(--muted); }
-.we-badge--location { color: var(--muted); }
-
-/* Bullet List */
-.we-card-list {
-    margin: 0 0 16px;
+.we-bullets {
+    margin: 24px 0 0;
     padding-left: 18px;
-    list-style: none;
+    max-width: 620px;
 }
 
-.we-card-list li {
-    position: relative;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 6px;
-    padding-left: 12px;
-}
-
-.we-card-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-}
-
-/* Skill Tags */
-.we-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.we-tag {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 0;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: border-color 0.18s, color 0.18s;
-}
-
-.we-tag:hover {
-    border-color: rgba(255, 255, 255, 0.2);
+.we-bullets li {
+    font-size: var(--fs-body);
+    line-height: 1.75;
     color: var(--text);
+    margin-bottom: 10px;
 }
 
-/* =====================================================
-   Responsive
-   ===================================================== */
-@media (max-width: 700px) {
-    .we-timeline::before { left: 18px; }
+.we-bullets li::marker {
+    color: var(--muted);
+}
 
-    .we-card {
-        width: 100%;
-        left: 0 !important;
-        padding-left: 46px;
+@media (max-width: 640px) {
+    .we-entry + .we-entry {
+        padding-top: 44px;
+        margin-top: 44px;
     }
 
-    .we-card-dot {
-        left: 13px !important;
-        right: auto !important;
-        top: 22px;
+    .we-bullets {
+        margin-top: 20px;
     }
-
-    .we-card--left .we-card-body::after,
-    .we-card--right .we-card-body::before { display: none; }
-
-    .we-page-title { font-size: 32px; }
 }
