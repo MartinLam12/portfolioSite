@@ -221,17 +221,6 @@ a { color: inherit; }
     position: relative;
 }
 
-.hero-needle {
-    position: absolute;
-    right: 12px;
-    bottom: -30px;
-    width: 130px;
-    height: auto;
-    opacity: 0.07;
-    pointer-events: none;
-    user-select: none;
-}
-
 .hero-rule {
     border: 0;
     border-top: 1px solid var(--border);
@@ -384,7 +373,9 @@ a { color: inherit; }
 
 /* ====== FOOTER ====== */
 .pg-foot {
-    background: var(--bg);
+    /* Transparent so the raymarching background wash runs unbroken behind it;
+       an opaque --bg here prints a hard seam across the gradient. */
+    background: transparent;
     border-top: 1px solid var(--border);
     padding: 72px 32px 40px;
     margin-top: 0;
@@ -463,7 +454,8 @@ html.js [data-reveal].is-revealed {
 
 /* ====== LEGACY (used by timeline.html until that page is redesigned) ====== */
 .profile {
-    background: var(--bg);
+    /* See .pg-foot — transparent so the background wash isn't interrupted. */
+    background: transparent;
     border-bottom: 1px solid var(--border);
     text-align: center;
     padding: 100px 24px 110px;
@@ -550,8 +542,6 @@ html.js [data-reveal].is-revealed {
         grid-template-columns: 1fr;
         gap: 88px;
     }
-
-    .hero-needle { display: none; }
 }
 
 @media (max-width: 640px) {
