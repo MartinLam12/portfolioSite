@@ -1,56 +1,10 @@
 <header class="nav-bar">
     <div class="nav-content">
-        <a href="{{ url_for('index') }}" class="nav-logo-link">
-            <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="nav-logo-img" />
-        </a>
+        <a href="{{ url_for('index') }}" class="nav-wordmark">Martin Lam<span class="nav-wordmark-dot">.</span></a>
 
-        <button class="nav-hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-
-        <nav id="navMenu">
-            <a href="{{ url_for('index') }}"{% if request.path == '/' %} class="nav-active"{% endif %}>Home</a>
-            <a href="{{ url_for('education.education') }}"{% if request.path == '/education' %} class="nav-active"{% endif %}>Education</a>
-            <a href="{{ url_for('work_experience') }}"{% if request.path == '/work-experience' %} class="nav-active"{% endif %}>Work</a>
-            <a href="{{ url_for('projects') }}"{% if request.path == '/projects' %} class="nav-active"{% endif %}>Projects</a>
-            <a href="{{ url_for('map') }}"{% if request.path == '/map' %} class="nav-active"{% endif %}>Map</a>
-            <a href="{{ url_for('timeline') }}"{% if request.path == '/timeline' %} class="nav-active"{% endif %}>Timeline</a>
+        <nav>
+            <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" rel="noopener">resume</a>
+            <a href="mailto:martinlam16061@gmail.com">contact</a>
         </nav>
     </div>
 </header>
-
-<script>
-    (function () {
-        var toggle = document.getElementById('navToggle');
-        var menu = document.getElementById('navMenu');
-        toggle.addEventListener('click', function () {
-            var open = menu.classList.toggle('nav-open');
-            toggle.classList.toggle('nav-hamburger--open', open);
-            toggle.setAttribute('aria-expanded', open);
-        });
-    })();
-
-    (function () {
-        var sectionMap = {
-            '/education':      'section-education',
-            '/work-experience':'section-work',
-            '/projects':       'section-projects',
-            '/map':            'section-map'
-        };
-
-        document.querySelectorAll('#navMenu a').forEach(function (a) {
-            a.addEventListener('click', function (e) {
-                var path = new URL(this.getAttribute('href'), location.origin).pathname;
-                var sectionId = sectionMap[path];
-                if (!sectionId) return;
-                e.preventDefault();
-                if (location.pathname === '/') {
-                    var el = document.getElementById(sectionId);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    location.href = '/#' + sectionId;
-                }
-            });
-        });
-    })();
-</script>

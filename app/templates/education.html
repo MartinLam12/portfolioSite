@@ -2,49 +2,90 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:title" content="Personal Portfolio">
     <meta property="og:description" content="My Educational Experience">
+    <script>document.documentElement.classList.add('js');</script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link lang='sass' rel="stylesheet" href="../static/styles/main.css">
-    <link lang='sass' rel="stylesheet" href="../static/styles/education.css">
-    <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/education.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
     <title>{{ title }}</title>
 </head>
 
 <body>
     {% include "nav.html" %}
 
-    <div class="edu-header">
-        <h1 class="edu-header-title">{{ title }}</h1>
-        <p class="edu-header-subtitle">My academic journey</p>
+    <div class="shell page-shell">
+        <div class="page-main">
+            <p class="eyebrow" data-reveal>Education</p>
+
+            {% for entry in entries %}
+            <article class="edu-entry" data-reveal-group>
+                <div data-reveal>
+                    <h2 class="edu-school">{{ entry.school }}</h2>
+                    <p class="edu-degree">{{ entry.degree }}</p>
+                    <p class="edu-dates">{{ entry.dates }}</p>
+                </div>
+                <p class="edu-desc" data-reveal>{{ entry.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+
+        <aside class="page-side" data-reveal-group>
+            <div class="side-group">
+                <h2 class="side-heading" data-reveal>Status</h2>
+                <div class="side-entry" data-reveal>
+                    <p class="status-label">Expected Graduation</p>
+                    <p class="status-value">Spring 2027</p>
+                </div>
+                <div class="side-entry" data-reveal>
+                    <p class="status-label">Focus</p>
+                    <p class="status-value">Software Engineering &middot; Data Science</p>
+                </div>
+            </div>
+        </aside>
     </div>
 
-    <main class="edu-grid">
-        {% for entry in entries %}
-        <div class="edu-card">
-            <div class="edu-icon">🎓</div>
-            <div class="edu-body">
-                <h3 class="edu-school">{{ entry.school }}</h3>
-                <p class="edu-degree">{{ entry.degree }}</p>
-                <span class="edu-dates">{{ entry.dates }}</span>
-                <p class="edu-desc">{{ entry.description }}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </main>
+    <footer class="mini-foot">&copy; 2024 &mdash; Built with Flask</footer>
 
-    <footer class="pg-foot" style="text-align:center;">
-        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:13px;">
-            &copy; 2024 My Portfolio &mdash; Built with Flask
-        </p>
-    </footer>
+<script>
+/* Scroll reveal — same pattern as homepage */
+(function () {
+    var els = document.querySelectorAll('[data-reveal]');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-revealed'); });
+        return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            io.unobserve(entry.target);
+
+            var items = entry.target.hasAttribute('data-reveal')
+                ? [entry.target]
+                : Array.from(entry.target.querySelectorAll('[data-reveal]'));
+
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = Math.min(i * 60, 480) + 'ms';
+                el.classList.add('is-revealed');
+            });
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal-group]').forEach(function (g) { io.observe(g); });
+    els.forEach(function (el) {
+        if (!el.closest('[data-reveal-group]')) io.observe(el);
+    });
+})();
+</script>
+
 </body>
 </html>
