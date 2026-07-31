@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Timeline">
+    <meta property="og:description" content="Leave a note on the timeline">
+    <script>document.documentElement.classList.add('js');</script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/timeline.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
     <title>{{ title }}</title>
 </head>
+
 <body>
     {% include "nav.html" %}
 
-    <div class="profile timeline-hero">
-        <h1>Timeline</h1>
-        <p class="profile-subtitle">Say something &nbsp;·&nbsp; newest first</p>
-    </div>
+    <div class="shell page-shell">
+        <div class="page-main">
+            <p class="eyebrow" data-reveal>Timeline</p>
 
-    <main class="content">
-        <section class="timeline-form-section">
-            <h2 class="section-heading">Post</h2>
-            <form id="timeline-form" class="timeline-form">
-                <input type="text" name="name" id="name" placeholder="Name" required>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-                <textarea name="content" id="content" placeholder="What's on your mind?" rows="3" required></textarea>
-                <button type="submit" class="profile-cta timeline-submit">Post</button>
-            </form>
-        </section>
+            <section class="timeline-form-section" data-reveal-group>
+                <form id="timeline-form" class="timeline-form" data-reveal>
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <textarea name="content" id="content" placeholder="What's on your mind?" rows="3" required></textarea>
+                    <button type="submit" class="timeline-submit">Post</button>
+                </form>
+            </section>
 
-        <section class="timeline-feed-section">
-            <h2 class="section-heading">Feed</h2>
-            <ul id="timeline-list" class="timeline-list">
+            <ul id="timeline-list" class="timeline-list" data-reveal-group>
                 {% for post in posts %}
-                <li class="timeline-item" data-id="{{ post.id }}">
+                <li class="timeline-item" data-id="{{ post.id }}" data-reveal>
                     <img class="timeline-avatar" src="https://www.gravatar.com/avatar/{{ post.email | gravatar_hash }}?d=identicon&s=64" alt="">
                     <div class="timeline-item-body">
                         <div class="timeline-item-header">
@@ -48,73 +50,51 @@
                 <li class="timeline-empty">No posts yet — be the first.</li>
                 {% endfor %}
             </ul>
-        </section>
-    </main>
-
-    <footer class="pg-foot">
-        <div class="pg-foot-inner">
-            <div>
-                <p class="pg-foot-col-label">Quick Links</p>
-                <div class="pg-foot-links">
-                    <a href="/work-experience">Work Experience</a>
-                    <a href="/education">Education</a>
-                    <a href="/projects">Projects</a>
-                </div>
-            </div>
-            <div>
-                <p class="pg-foot-col-label">Contact</p>
-                <p class="pg-foot-contact-email">martinlam16061@gmail.com</p>
-            </div>
         </div>
-    </footer>
 
+        <aside class="page-side" data-reveal-group>
+            <div class="side-group">
+                <h2 class="side-heading" data-reveal>About</h2>
+                <p class="side-entry-sub" data-reveal>A public guestbook &mdash; leave your name and a note, newest posts show up first.</p>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="mini-foot">&copy; 2024 &mdash; Built with Flask</footer>
+
+<script src="{{ url_for('static', filename='js/timeline-post.js') }}"></script>
 <script>
-async function sha256Hex(str) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
+/* Scroll reveal — same pattern as homepage */
+(function () {
+    var els = document.querySelectorAll('[data-reveal]');
 
-document.getElementById('timeline-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const content = form.content.value.trim();
-
-    const res = await fetch('/api/timeline_post', {
-        method: 'POST',
-        body: new URLSearchParams({ name, email, content })
-    });
-
-    if (!res.ok) {
-        alert('Something went wrong posting that.');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-revealed'); });
         return;
     }
 
-    const post = await res.json();
-    const hash = await sha256Hex(email.toLowerCase());
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            io.unobserve(entry.target);
 
-    const list = document.getElementById('timeline-list');
-    const empty = list.querySelector('.timeline-empty');
-    if (empty) empty.remove();
+            var items = entry.target.hasAttribute('data-reveal')
+                ? [entry.target]
+                : Array.from(entry.target.querySelectorAll('[data-reveal]'));
 
-    const li = document.createElement('li');
-    li.className = 'timeline-item';
-    li.dataset.id = post.id;
-    li.innerHTML = `
-        <img class="timeline-avatar" src="https://www.gravatar.com/avatar/${hash}?d=identicon&s=64" alt="">
-        <div class="timeline-item-body">
-            <div class="timeline-item-header">
-                <span class="timeline-name">${post.name}</span>
-                <time>${new Date(post.created_at).toLocaleString()}</time>
-            </div>
-            <p>${post.content}</p>
-        </div>
-    `;
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = Math.min(i * 60, 480) + 'ms';
+                el.classList.add('is-revealed');
+            });
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    list.insertBefore(li, list.firstChild);
-    form.reset();
-});
+    document.querySelectorAll('[data-reveal-group]').forEach(function (g) { io.observe(g); });
+    els.forEach(function (el) {
+        if (!el.closest('[data-reveal-group]')) io.observe(el);
+    });
+})();
 </script>
+
 </body>
 </html>
