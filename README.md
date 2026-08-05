@@ -2,6 +2,7 @@
 
 Welcome to the MLH Fellowship! During Week 1, you'll be using Flask to build a portfolio site. This site will be the foundation for activities we do in future weeks so spend time this week making it your own and reflect your personality!
 
+<!-- testing CI trigger on PR -->
 ## Tasks
 
 Once you've got your portfolio downloaded and running using the instructions below, you should attempt to complete the following tasks.
